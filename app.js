@@ -5,7 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 
-const url = 'mongodb://localhost:27017/nucampsite';
+// const url = 'mongodb://localhost:27017/nucampsite';
+const url = 'mongodb+srv://tomilayoafolabi:3p6V50WClFZK0DU1@workshop-bakery.wrshxr9.mongodb.net/nucampsite?retryWrites=true&w=majority';
 const connect = mongoose.connect(url, {
     useCreateIndex: true,
     useFindAndModify: false,
@@ -55,4 +56,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
+// module.exports = app;
+
+exports.mongoAtlasApp = app;
