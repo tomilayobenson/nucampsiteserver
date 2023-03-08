@@ -24,6 +24,15 @@ const promotionRouter = require('./routes/promotionRouter');
 
 var app = express();
 
+app.all('*',(req,res,next)=> {
+  if (req.secure) {
+    next()
+  } else {
+    console.log(`redirecting to https://${req.hostname}:${app.get('secPort')}${req.url}`)
+    res.redirect(301,`https://${req.hostname}:${app.get('secPort')}${req.url}`)
+  }
+})
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
